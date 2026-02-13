@@ -19,114 +19,53 @@ align-items:center;
 height:100vh;
 }
 
-/* Stars background */
+/* Smooth fade */
+.fade{animation:fadeIn 1.2s ease;}
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* Stars */
 .star{
 position:absolute;
-width:2px;
-height:2px;
-background:white;
-border-radius:50%;
-opacity:0.8;
-animation:twinkle 2s infinite alternate;
+width:2px;height:2px;background:white;border-radius:50%;
+opacity:0.8;animation:twinkle 2s infinite alternate;
 }
+@keyframes twinkle{from{opacity:0.3;}to{opacity:1;}}
 
-@keyframes twinkle{
-from{opacity:0.3;}
-to{opacity:1;}
-}
-
-/* Gift Box */
+/* Gift */
 #giftBox{
-font-size:80px;
-cursor:pointer;
-animation:float 2s infinite ease-in-out;
+font-size:85px;cursor:pointer;
+animation:float 2.5s infinite ease-in-out;
 }
-
 @keyframes float{
 0%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
+50%{transform:translateY(-12px);}
 100%{transform:translateY(0);}
 }
 
 /* Slides */
-.slide{
-display:none;
-flex-direction:column;
-align-items:center;
-text-align:center;
-animation:fadeIn 1s ease;
-}
-
+.slide{display:none;flex-direction:column;align-items:center;text-align:center;}
 .active{display:flex;}
 
-h1{
-font-family:'Playfair Display',serif;
-color:#ffb3ec;
-}
+h1{font-family:'Playfair Display',serif;color:#ffb3ec;}
 
+/* Buttons */
 button{
-padding:12px 25px;
-margin:10px;
-border:none;
-border-radius:30px;
-cursor:pointer;
-background:linear-gradient(45deg,#ff66cc,#ff99dd);
-color:white;
-box-shadow:0 0 15px #ff66cc;
-transition:0.3s;
+padding:12px 26px;margin:10px;border:none;border-radius:30px;
+cursor:pointer;background:linear-gradient(45deg,#ff66cc,#ff99dd);
+color:white;box-shadow:0 0 18px #ff66cc;transition:0.3s;
 }
-
-button:hover{transform:scale(1.1);}
+button:hover{transform:scale(1.12);}
 
 #noBtn{position:absolute;}
 
-/* Sparkle */
-.sparkle{
-position:absolute;
-pointer-events:none;
-animation:spark 0.8s linear forwards;
-}
-@keyframes spark{
-0%{opacity:1;transform:scale(1);}
-100%{opacity:0;transform:scale(2);}
-}
-
-/* Ring */
-.ring{
-position:absolute;
-font-size:40px;
-animation:pop 1s ease forwards;
-}
-@keyframes pop{
-0%{transform:scale(0);}
-70%{transform:scale(1.5);}
-100%{transform:scale(1);}
-}
-
 /* Letter */
 #letter{
-display:none;
-position:fixed;
-background:white;
-color:#ff4da6;
-padding:25px;
-border-radius:20px;
-max-width:300px;
-text-align:center;
+display:none;position:fixed;background:white;color:#ff4da6;
+padding:25px;border-radius:20px;max-width:300px;text-align:center;
 box-shadow:0 0 25px pink;
-}
-
-/* Constellation text */
-.constellation{
-font-size:32px;
-letter-spacing:5px;
-color:#fff;
-text-shadow:0 0 10px #fff,0 0 20px #ff99dd,0 0 30px #ff66cc;
-animation:glow 2s infinite alternate;
-}
-@keyframes glow{
-from{text-shadow:0 0 5px #fff;}
-to{text-shadow:0 0 20px #ff66cc;}
 }
 
 @keyframes fadeIn{
@@ -138,52 +77,93 @@ to{opacity:1;transform:translateY(0);}
 
 <body>
 
-<!-- Background Music -->
+<!-- Music -->
 <iframe width="0" height="0"
-src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&loop=1&playlist=2Vv-BfVoq4g"
+src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&mute=1&loop=1&playlist=2Vv-BfVoq4g"
 allow="autoplay"></iframe>
 
-<!-- Gift Box -->
+<!-- Gift -->
 <div id="giftBox">🎁</div>
 
 <!-- Slides -->
+
 <div class="slide" id="slide1">
-<div class="constellation">AHSEN ✨ ZUNI</div>
-<div class="constellation" style="font-size:22px;margin-top:10px;">ZUAH 💖</div>
-<br>
 <h1>This is for Zuni 💕</h1>
-<button onclick="nextSlide(2)">I am Zuni and I'm ready 💖</button>
+<button onclick="nextSlide('slide2')">I am Zuni and I'm ready 💖</button>
 </div>
 
 <div class="slide" id="slide2">
 <h1>Do you know I love you a lot? 💗</h1>
-<button onclick="nextSlide(3)">Yes 😌</button>
-<button onclick="nextSlide(3)">No 🙈</button>
+<button onclick="nextSlide('slideCute1')">Yes 😌</button>
+<button onclick="nextSlide('slideCute1')">No 🙈</button>
 </div>
 
-<div class="slide" id="slide3">
-<h1>Ready to spend your whole life with me? 💍</h1>
-<button onclick="nextSlide(4)">Yes 💕</button>
-<button onclick="nextSlide(4)">No 🙊</button>
+<!-- Cute Questions -->
+<div class="slide" id="slideCute1">
+<h1>Who makes your heart smile the most? 😊</h1>
+<button onclick="nextSlide('slideCute2')">You 💖</button>
+<button onclick="nextSlide('slideCute2')">Obviously you 🙈</button>
 </div>
 
-<div class="slide" id="slide4">
+<div class="slide" id="slideCute2">
+<h1>Do you promise to hold my hand forever? 🤝</h1>
+<button onclick="nextSlide('slideCute3')">Promise 💞</button>
+<button onclick="nextSlide('slideCute3')">Pakki promise 😌</button>
+</div>
+
+<div class="slide" id="slideCute3">
+<h1>Even on bad days… will you still love me? 🌧️❤️</h1>
+<button onclick="nextSlide('slideDeep1')">Always 💖</button>
+<button onclick="nextSlide('slideDeep1')">More than before 🥺</button>
+</div>
+
+<!-- Deep Romantic Questions -->
+<div class="slide" id="slideDeep1">
+<h1>If I hug you right now… would you let go? 🤍</h1>
+<button onclick="nextSlide('slideDeep2')">Never 🥺</button>
+<button onclick="nextSlide('slideDeep2')">I’d hold tighter 💞</button>
+</div>
+
+<div class="slide" id="slideDeep2">
+<h1>Are you ready to create a forever with me? ⏳❤️</h1>
+<button onclick="nextSlide('slideDeep3')">Yes… forever 💖</button>
+<button onclick="nextSlide('slideDeep3')">Always with you 😌</button>
+</div>
+
+<div class="slide" id="slideDeep3">
+<h1>Can I call you mine… in every lifetime? ♾️</h1>
+<button onclick="nextSlide('slideDeep4')">I’m already yours 💕</button>
+<button onclick="nextSlide('slideDeep4')">Every lifetime 💫</button>
+</div>
+
+<div class="slide" id="slideDeep4">
+<h1>When we’re old… will you still sit beside me? 👵🏻❤️</h1>
+<button onclick="nextSlide('slideFinalQ')">Till my last breath 💖</button>
+<button onclick="nextSlide('slideFinalQ')">Always beside you 🥺</button>
+</div>
+
+<!-- Final Question -->
+<div class="slide" id="slideFinalQ">
 <h1>Will you be my Valentine? 💘</h1>
 <button onclick="yesClicked(event)">YESSS 💖</button>
 <button id="noBtn">No 😏</button>
 </div>
 
-<div class="slide" id="slide5">
+<!-- Ending -->
+<div class="slide" id="slideEnd">
 <h1>Forever Yours 💕</h1>
 <h2>Ahsen ❤️ Zuni</h2>
 </div>
 
+<!-- Letter -->
 <div id="letter">
 <h2>💌 My Love Letter</h2>
-<p>Zuni, you are my universe.  
-Every star tonight shines for us.  
+<p>
+Zuni, you are my universe.  
+Every star shines for us.  
 I promise to love you forever. 💖  
-— Ahsen</p>
+— Ahsen
+</p>
 <button onclick="closeLetter()">Close 💕</button>
 </div>
 
@@ -199,19 +179,22 @@ star.style.animationDuration=(Math.random()*2+1)+"s";
 document.body.appendChild(star);
 }
 
-/* Gift Open */
+/* Gift open */
 document.getElementById("giftBox").onclick=function(){
 this.innerText="💖";
-this.style.fontSize="60px";
 setTimeout(()=>{
 this.style.display="none";
-document.getElementById("slide1").classList.add("active");
+nextSlide('slide1');
 },800);
 };
 
-function nextSlide(n){
-document.querySelectorAll(".slide").forEach(s=>s.classList.remove("active"));
-document.getElementById("slide"+n).classList.add("active");
+/* Slide change */
+function nextSlide(id){
+document.querySelectorAll(".slide").forEach(s=>{
+s.classList.remove("active","fade");
+});
+let el=document.getElementById(id);
+el.classList.add("active","fade");
 }
 
 /* Floating NO */
@@ -223,36 +206,17 @@ noBtn.style.left=Math.random()*80+"vw";
 noBtn.style.top=Math.random()*80+"vh";
 }
 
-/* Sparkle trail */
-document.addEventListener("mousemove",e=>{
-let s=document.createElement("div");
-s.classList.add("sparkle");
-s.innerText="✨";
-s.style.left=e.pageX+"px";
-s.style.top=e.pageY+"px";
-document.body.appendChild(s);
-setTimeout(()=>s.remove(),800);
-});
-
-/* YES */
+/* YES click */
 function yesClicked(e){
-let ring=document.createElement("div");
-ring.classList.add("ring");
-ring.innerText="💍";
-ring.style.left=e.pageX+"px";
-ring.style.top=e.pageY+"px";
-document.body.appendChild(ring);
-
-setTimeout(()=>{
-ring.remove();
+nextSlide('slideEnd');
 document.getElementById("letter").style.display="block";
-nextSlide(5);
-},1000);
 }
 
+/* Close letter */
 function closeLetter(){
 document.getElementById("letter").style.display="none";
 }
+
 </script>
 
 </body>
