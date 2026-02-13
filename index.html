@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Zuni 💖</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;500&display=swap');
+
+body{
+margin:0;
+overflow:hidden;
+background:radial-gradient(circle at top,#14001a,#000010);
+color:white;
+font-family:'Poppins',sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+/* Stars background */
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+opacity:0.8;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:0.3;}
+to{opacity:1;}
+}
+
+/* Gift Box */
+#giftBox{
+font-size:80px;
+cursor:pointer;
+animation:float 2s infinite ease-in-out;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+/* Slides */
+.slide{
+display:none;
+flex-direction:column;
+align-items:center;
+text-align:center;
+animation:fadeIn 1s ease;
+}
+
+.active{display:flex;}
+
+h1{
+font-family:'Playfair Display',serif;
+color:#ffb3ec;
+}
+
+button{
+padding:12px 25px;
+margin:10px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+background:linear-gradient(45deg,#ff66cc,#ff99dd);
+color:white;
+box-shadow:0 0 15px #ff66cc;
+transition:0.3s;
+}
+
+button:hover{transform:scale(1.1);}
+
+#noBtn{position:absolute;}
+
+/* Sparkle */
+.sparkle{
+position:absolute;
+pointer-events:none;
+animation:spark 0.8s linear forwards;
+}
+@keyframes spark{
+0%{opacity:1;transform:scale(1);}
+100%{opacity:0;transform:scale(2);}
+}
+
+/* Ring */
+.ring{
+position:absolute;
+font-size:40px;
+animation:pop 1s ease forwards;
+}
+@keyframes pop{
+0%{transform:scale(0);}
+70%{transform:scale(1.5);}
+100%{transform:scale(1);}
+}
+
+/* Letter */
+#letter{
+display:none;
+position:fixed;
+background:white;
+color:#ff4da6;
+padding:25px;
+border-radius:20px;
+max-width:300px;
+text-align:center;
+box-shadow:0 0 25px pink;
+}
+
+/* Constellation text */
+.constellation{
+font-size:32px;
+letter-spacing:5px;
+color:#fff;
+text-shadow:0 0 10px #fff,0 0 20px #ff99dd,0 0 30px #ff66cc;
+animation:glow 2s infinite alternate;
+}
+@keyframes glow{
+from{text-shadow:0 0 5px #fff;}
+to{text-shadow:0 0 20px #ff66cc;}
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&loop=1&playlist=2Vv-BfVoq4g"
+allow="autoplay"></iframe>
+
+<!-- Gift Box -->
+<div id="giftBox">🎁</div>
+
+<!-- Slides -->
+<div class="slide" id="slide1">
+<div class="constellation">AHSEN ✨ ZUNI</div>
+<div class="constellation" style="font-size:22px;margin-top:10px;">ZUAH 💖</div>
+<br>
+<h1>This is for Zuni 💕</h1>
+<button onclick="nextSlide(2)">I am Zuni and I'm ready 💖</button>
+</div>
+
+<div class="slide" id="slide2">
+<h1>Do you know I love you a lot? 💗</h1>
+<button onclick="nextSlide(3)">Yes 😌</button>
+<button onclick="nextSlide(3)">No 🙈</button>
+</div>
+
+<div class="slide" id="slide3">
+<h1>Ready to spend your whole life with me? 💍</h1>
+<button onclick="nextSlide(4)">Yes 💕</button>
+<button onclick="nextSlide(4)">No 🙊</button>
+</div>
+
+<div class="slide" id="slide4">
+<h1>Will you be my Valentine? 💘</h1>
+<button onclick="yesClicked(event)">YESSS 💖</button>
+<button id="noBtn">No 😏</button>
+</div>
+
+<div class="slide" id="slide5">
+<h1>Forever Yours 💕</h1>
+<h2>Ahsen ❤️ Zuni</h2>
+</div>
+
+<div id="letter">
+<h2>💌 My Love Letter</h2>
+<p>Zuni, you are my universe.  
+Every star tonight shines for us.  
+I promise to love you forever. 💖  
+— Ahsen</p>
+<button onclick="closeLetter()">Close 💕</button>
+</div>
+
+<script>
+
+/* Stars */
+for(let i=0;i<120;i++){
+let star=document.createElement("div");
+star.classList.add("star");
+star.style.top=Math.random()*100+"vh";
+star.style.left=Math.random()*100+"vw";
+star.style.animationDuration=(Math.random()*2+1)+"s";
+document.body.appendChild(star);
+}
+
+/* Gift Open */
+document.getElementById("giftBox").onclick=function(){
+this.innerText="💖";
+this.style.fontSize="60px";
+setTimeout(()=>{
+this.style.display="none";
+document.getElementById("slide1").classList.add("active");
+},800);
+};
+
+function nextSlide(n){
+document.querySelectorAll(".slide").forEach(s=>s.classList.remove("active"));
+document.getElementById("slide"+n).classList.add("active");
+}
+
+/* Floating NO */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",move);
+noBtn.addEventListener("touchstart",move);
+function move(){
+noBtn.style.left=Math.random()*80+"vw";
+noBtn.style.top=Math.random()*80+"vh";
+}
+
+/* Sparkle trail */
+document.addEventListener("mousemove",e=>{
+let s=document.createElement("div");
+s.classList.add("sparkle");
+s.innerText="✨";
+s.style.left=e.pageX+"px";
+s.style.top=e.pageY+"px";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),800);
+});
+
+/* YES */
+function yesClicked(e){
+let ring=document.createElement("div");
+ring.classList.add("ring");
+ring.innerText="💍";
+ring.style.left=e.pageX+"px";
+ring.style.top=e.pageY+"px";
+document.body.appendChild(ring);
+
+setTimeout(()=>{
+ring.remove();
+document.getElementById("letter").style.display="block";
+nextSlide(5);
+},1000);
+}
+
+function closeLetter(){
+document.getElementById("letter").style.display="none";
+}
+</script>
+
+</body>
+</html>
