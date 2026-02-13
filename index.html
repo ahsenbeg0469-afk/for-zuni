@@ -19,7 +19,7 @@ align-items:center;
 height:100vh;
 }
 
-/* Smooth fade */
+/* Fade animation */
 .fade{animation:fadeIn 1.2s ease;}
 @keyframes fadeIn{
 from{opacity:0;transform:translateY(20px);}
@@ -64,23 +64,17 @@ button:hover{transform:scale(1.12);}
 /* Letter */
 #letter{
 display:none;position:fixed;background:white;color:#ff4da6;
-padding:25px;border-radius:20px;max-width:300px;text-align:center;
+padding:25px;border-radius:20px;max-width:320px;text-align:center;
 box-shadow:0 0 25px pink;
-}
-
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;transform:translateY(0);}
+line-height:1.6;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Music -->
-<iframe width="0" height="0"
-src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&mute=1&loop=1&playlist=2Vv-BfVoq4g"
-allow="autoplay"></iframe>
+<!-- Hidden Love Story Music -->
+<iframe id="music" width="0" height="0" src="" allow="autoplay"></iframe>
 
 <!-- Gift -->
 <div id="giftBox">🎁</div>
@@ -98,7 +92,7 @@ allow="autoplay"></iframe>
 <button onclick="nextSlide('slideCute1')">No 🙈</button>
 </div>
 
-<!-- Cute Questions -->
+<!-- Cute -->
 <div class="slide" id="slideCute1">
 <h1>Who makes your heart smile the most? 😊</h1>
 <button onclick="nextSlide('slideCute2')">You 💖</button>
@@ -117,39 +111,39 @@ allow="autoplay"></iframe>
 <button onclick="nextSlide('slideDeep1')">More than before 🥺</button>
 </div>
 
-<!-- Deep Romantic Questions -->
+<!-- Deep -->
 <div class="slide" id="slideDeep1">
 <h1>If I hug you right now… would you let go? 🤍</h1>
 <button onclick="nextSlide('slideDeep2')">Never 🥺</button>
-<button onclick="nextSlide('slideDeep2')">I’d hold tighter 💞</button>
+<button onclick="nextSlide('slideDeep2')">Hold tighter 💞</button>
 </div>
 
 <div class="slide" id="slideDeep2">
 <h1>Are you ready to create a forever with me? ⏳❤️</h1>
-<button onclick="nextSlide('slideDeep3')">Yes… forever 💖</button>
-<button onclick="nextSlide('slideDeep3')">Always with you 😌</button>
+<button onclick="nextSlide('slideDeep3')">Forever 💖</button>
+<button onclick="nextSlide('slideDeep3')">Always 😌</button>
 </div>
 
 <div class="slide" id="slideDeep3">
 <h1>Can I call you mine… in every lifetime? ♾️</h1>
-<button onclick="nextSlide('slideDeep4')">I’m already yours 💕</button>
+<button onclick="nextSlide('slideDeep4')">I’m yours 💕</button>
 <button onclick="nextSlide('slideDeep4')">Every lifetime 💫</button>
 </div>
 
 <div class="slide" id="slideDeep4">
 <h1>When we’re old… will you still sit beside me? 👵🏻❤️</h1>
-<button onclick="nextSlide('slideFinalQ')">Till my last breath 💖</button>
+<button onclick="nextSlide('slideFinalQ')">Till last breath 💖</button>
 <button onclick="nextSlide('slideFinalQ')">Always beside you 🥺</button>
 </div>
 
-<!-- Final Question -->
+<!-- Final -->
 <div class="slide" id="slideFinalQ">
 <h1>Will you be my Valentine? 💘</h1>
-<button onclick="yesClicked(event)">YESSS 💖</button>
+<button onclick="yesClicked()">YESSS 💖</button>
 <button id="noBtn">No 😏</button>
 </div>
 
-<!-- Ending -->
+<!-- End -->
 <div class="slide" id="slideEnd">
 <h1>Forever Yours 💕</h1>
 <h2>Ahsen ❤️ Zuni</h2>
@@ -159,9 +153,20 @@ allow="autoplay"></iframe>
 <div id="letter">
 <h2>💌 My Love Letter</h2>
 <p>
-Zuni, you are my universe.  
-Every star shines for us.  
-I promise to love you forever. 💖  
+Zuni, my love… I love you very much.  
+These Valentines and special days are beautiful…  
+but you know I’m here to love you **every single day**  
+like it’s the first day I fell in love with you.  
+
+I promise to stay beside you in every moment,  
+and I hope you feel the same way too.  
+
+I’ve forgotten how to live without you…  
+you’ve become such an important part of my life,  
+and I can’t be more thankful to God for that.  
+
+I love you always…  
+**muwahhh 💖**  
 — Ahsen
 </p>
 <button onclick="closeLetter()">Close 💕</button>
@@ -207,9 +212,17 @@ noBtn.style.top=Math.random()*80+"vh";
 }
 
 /* YES click */
-function yesClicked(e){
+function yesClicked(){
 nextSlide('slideEnd');
+
+/* Start Love Story music */
+document.getElementById("music").src =
+"https://www.youtube.com/embed/8xg3vE8Ie_E?autoplay=1&loop=1&playlist=8xg3vE8Ie_E";
+
+/* Show letter */
+setTimeout(()=>{
 document.getElementById("letter").style.display="block";
+},800);
 }
 
 /* Close letter */
